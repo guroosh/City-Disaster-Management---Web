@@ -40,15 +40,9 @@ export class RegisterComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            username: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            dateOfBirth: ['', Validators.required],
             email: ['', Validators.required],
-            phoneNumber: ['', Validators.required],
-            govtIdNumber: ['', Validators.required],
-            isVolunteer:[false,Validators.required],
-            volunteerType:['',Validators.required],
-            govtIdType:['',Validators.required]
+            badgeIdNumber: ['', Validators.required],
+            Role: ['', Validators.required]
         });
     }
 

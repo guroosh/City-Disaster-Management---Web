@@ -12,7 +12,8 @@ export class UserService {
     }
 
     register(user: User) {
-        return this.http.post(`${config.apiUrl}/users/register`, user);
+        //return this.http.post(`${config.apiUrl}/users/register`, user);
+        return this.http.post(`http://10.6.38.11:8080/services/rs/registration/registerAu`, user);
     }
 
     delete(id: number) {

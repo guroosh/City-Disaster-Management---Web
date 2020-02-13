@@ -38,10 +38,10 @@ export class RegisterComponent implements OnInit {
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            email: ['', Validators.required],
-            badgeIdNumber: ['', Validators.required],
+            firstName: ['Manasi', Validators.required],
+            lastName: ['PP', Validators.required],
+            email: ['Manasi@tcd.ie', Validators.required],
+            badgeIdNumber: ['5566', Validators.required],
             Role: ['', Validators.required]
         });
     }
@@ -52,15 +52,16 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
+        
         // reset alerts on submit
         this.alertService.clear();
-
+        //alert("Submission is running.");
         // stop here if form is invalid
+        /*
         if (this.registerForm.invalid) {
             return;
-        }
-
+        }*/
+        //alert("Submission is running.");
         this.loading = true;
         this.userService.register(this.registerForm.value)
             .pipe(first())
@@ -73,6 +74,19 @@ export class RegisterComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+        alert("Submission is successful.");
     }
 }
-
+/*
+function submitForm() {
+    alert("ttttt");
+    var formData: any = new FormData();
+    formData.append("name", this.form.get('name').value);
+    formData.append("avatar", this.form.get('avatar').value);
+  
+    this.http.post('http://10.6.38.11:8080/services/rs/registration/registerAu', formData).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    )
+  }
+*/

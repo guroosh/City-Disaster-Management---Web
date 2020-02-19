@@ -42,7 +42,8 @@ export class RegisterComponent implements OnInit {
             lastName: ['PP', Validators.required],
             email: ['Manasi@tcd.ie', Validators.required],
             badgeIdNumber: ['5566', Validators.required],
-            Role: ['', Validators.required]
+            Role: ['Field Agent', Validators.required],
+            Department: ['Police', Validators.required]
         });
     }
 
@@ -74,7 +75,7 @@ export class RegisterComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-        alert("Submission is successful.");
+        //alert("Submission is successful.");
     }
 }
 /*

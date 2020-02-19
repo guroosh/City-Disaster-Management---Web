@@ -13,4 +13,5 @@
     //volunteerType : string;
     BadgeId: string;
     Role: string;
+    Department: string;
 }

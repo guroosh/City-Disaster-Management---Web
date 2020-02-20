@@ -29,7 +29,7 @@ export class JwtInterceptor implements HttpInterceptor {
                 }*/
             });
         }else{
-            alert("Not Registered");
+            //alert("Not Registered");
         }
 
         return next.handle(request);

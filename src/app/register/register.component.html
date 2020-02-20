@@ -1,54 +1,35 @@
 ﻿<h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-<!--<form [formGroup]="registerForm" action="http://10.6.38.11:8080/services/rs/registration/registerAu" method="POST">-->
+
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" value="Manasi" formControlName="firstName" class="form-control" />
-        <!--
-        <input type="text" value="Manasi" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
-        </div>-->
+       
     </div>
     <div class="form-group">
         <label for="lastName">Last Name</label>
         <input type="text" value="P" formControlName="lastName" class="form-control" />
-        <!--
-        <input type="text" value="P" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-        </div>-->
+       
     </div>
 
     <div class="form-group">
         <label for="email">email</label>
         <input type="email" value="Manasi@tcd.ie" formControlName="email" class="form-control" />
-        <!--
-        <input type="email" value="Manasi@tcd.ie" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">email is required</div>
-            <div *ngIf="f.email.errors.minlength">email must be at least 6 characters</div>
-        </div>
-    -->
+     
     </div>
 
 
     <div class="form-group">
-        <label for="badgeIdNumber">BadgeId</label>
-        <input type="text" value="5566" formControlName="badgeIdNumber" class="form-control" />
-        <!--
-        <input type="badgeIdNumber" value="5566" formControlName="badgeIdNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.badgeIdNumber.errors }" />
-        <div *ngIf="submitted && f.badgeIdNumber.errors" class="invalid-feedback">
-            <div *ngIf="f.badgeIdNumber.errors.required">Government Id Number is required</div>
-            <div *ngIf="f.badgeIdNumber.errors.minlength">Government Id Number must be at least 6 characters</div>
-        </div>-->
+        <label for="BadgeId">BadgeId</label>
+        <input type="text" value="5566" formControlName="BadgeId" class="form-control" />
+       
     </div>
 
     
     <div class="form-group">
         <label for="Role">Role</label>
         <select id="Role" formControlName="Role">
-            <!--<option value="" disabled selected>Select your role</option>-->
+           
             <option value="Field Agent" [selected]="true">Field Agent</option>
             <option value="Field Officer">Field Officer</option>
         </select>
@@ -56,13 +37,13 @@
     <div class="form-group">
         <label for="Department">Department</label>
         <select id="Department"  formControlName="Department" >
-            <!--<option value="" disabled selected>Select your role</option>-->
+          
             <option value="Police">Police</option>
+            <option value="Healthcare">Healthcare</option>
         </select>
     </div>
     <div class="form-group">
-        <!--<button [disabled]="loading" class="btn btn-primary" type="submit" formmethod="POST" >-->
-        <button [disabled]="loading" class="btn btn-primary">
+          <button [disabled]="loading" class="btn btn-primary">
             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
             Register
         </button>

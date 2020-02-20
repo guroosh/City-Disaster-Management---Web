@@ -1,16 +1,7 @@
 ﻿export class User {
-    //id: number;
-    //username: string;
-    //password: string;
+    email: string;
     firstName: string;
     lastName: string;
-    //dateOfBirth: string;
-    email: string;
-    //phoneNumber: string;
-    //govtIdNumber: string;
-    //token: string;
-    //isVolunteer : boolean;
-    //volunteerType : string;
     BadgeId: string;
     Role: string;
     Department: string;

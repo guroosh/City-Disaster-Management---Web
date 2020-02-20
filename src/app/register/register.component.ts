@@ -54,12 +54,25 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
+        this.loading = true;
        //alert("Registering user");
-        this.userService.register(this.registerForm.value);
+        var res = this.userService.register(this.registerForm.value,this);
         // reset alerts on submit
-        
-       this.loading = false;
+       //alert(res);
+       //console.log("result");
+       //console.log(res); 
+       //this.loading = false;
        
+    }
+    success(){
+        this.alertService.success('Registration successful',true);
+        this.router.navigate(['/login']);
+        this.loading = false;
+        this.submitted = false;
+    }
+    fail(){
+        this.loading = false;
+        this.submitted = false;
     }
 }
 

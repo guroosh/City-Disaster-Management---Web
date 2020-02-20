@@ -1,18 +1,19 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
-import { User } from '@/_models';
+import { AdminUser } from '@/_models';
 import { from } from 'rxjs';
+import { RegisterComponent } from '@/register';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>(`${config.apiUrl}/users`);
+        return this.http.get<AdminUser[]>(`${config.apiUrl}/users`);
     }
 
-    register(user: User) {
+    register(user: AdminUser,page: RegisterComponent) {
       console.log("Registeration happening")
       console.log(user.BadgeId);
       let headers = new HttpHeaders({'Content-Type':'application/json',
@@ -33,13 +34,21 @@ export class UserService {
       let options = { headers : headers} 
 
       return  this.http.post('http://10.6.38.11:8080/services/rs/registration/registerAu', data,options).subscribe(
-          (response) => console.log(response),
-          (error) => console.log(error)
-    
+          (response) => {
+            page.success();
+            console.log(response)
+          },
+          (error) => {
+            console.log(error)
+          }
         )
     }
 
     delete(id: number) {
         return this.http.delete(`${config.apiUrl}/users/${id}`);
+    }
+
+    userlist(user:AdminUser){
+    //  return this.http.
     }
 }

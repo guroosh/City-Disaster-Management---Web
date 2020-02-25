@@ -1,20 +1,17 @@
-﻿export class AdminUser {
-    email: string;
+﻿export class User {
+    //id: number;
+    //username: string;
+    //password: string;
     firstName: string;
     lastName: string;
+    //dateOfBirth: string;
+    email: string;
+    //phoneNumber: string;
+    //govtIdNumber: string;
+    //token: string;
+    //isVolunteer : boolean;
+    //volunteerType : string;
     BadgeId: string;
     Role: string;
     Department: string;
-}
-
-export class CommonUser {
-    FirstName: string;
-    LastName: string;
-    EmailId: string;
-    Password: string;
-    PhoneNumber: string;
-    governmentIdType: string;
-    governmentIdNumber: string;
-    IsVolunteering: boolean;
-    VolunteeringField: string;
 }

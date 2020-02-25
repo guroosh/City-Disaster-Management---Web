@@ -1,12 +1,12 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { AdminUser } from '@/_models';
+import { User } from '@/_models';
 import { UserService, AuthenticationService } from '@/_services';
 
 @Component({ templateUrl: 'home.component.html' })
 export class HomeComponent implements OnInit {
-    currentUser: AdminUser;
+    currentUser: User;
     users = [];
 
     constructor(

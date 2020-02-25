@@ -2,13 +2,13 @@
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
-import { AdminUser } from './_models';
+import { User } from './_models';
 
 import './_content/app.less';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-    currentUser: AdminUser;
+    currentUser: User;
 
     constructor(
         private router: Router,

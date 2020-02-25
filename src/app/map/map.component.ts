@@ -9,13 +9,13 @@ export class MapComponent {
   title = 'map';
   lat = 53.3498;
   lng = -6.2603;
-  topic = 'disaster';
+  topic = 'desaster';
 
   constructor() {
 
  
     const mqtt = require('mqtt')
-    var map_topic = 'disaster';
+    var map_topic = 'desaster';
     var opt = {
         port:1884,
         clientId: 'website'

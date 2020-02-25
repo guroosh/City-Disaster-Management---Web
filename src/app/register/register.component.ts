@@ -41,9 +41,10 @@ export class RegisterComponent implements OnInit {
             firstName: ['Manasi', Validators.required],
             lastName: ['PP', Validators.required],
             email: ['Manasi@tcd.ie', Validators.required],
-            badgeIdNumber: ['5566', Validators.required],
+            BadgeId: ['5566', Validators.required],
             Role: ['Field Agent', Validators.required],
-            Department: ['Police', Validators.required]
+            Department: ['Police', Validators.required],
+    
         });
     }
 
@@ -53,41 +54,25 @@ export class RegisterComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-        
-        // reset alerts on submit
-        //this.alertService.clear();
-        //alert("Submission is running.");
-        // stop here if form is invalid
-        /*
-        if (this.registerForm.invalid) {
-            return;
-        }*/
-        //alert("Submission is running.");
         this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-        //alert("Submission is successful.");
+       //alert("Registering user");
+        var res = this.userService.register(this.registerForm.value,this);
+        // reset alerts on submit
+       //alert(res);
+       //console.log("result");
+       //console.log(res); 
+       //this.loading = false;
+       
+    }
+    success(){
+        this.alertService.success('Registration successful',true);
+        this.router.navigate(['/login']);
+        this.loading = false;
+        this.submitted = false;
+    }
+    fail(){
+        this.loading = false;
+        this.submitted = false;
     }
 }
-/*
-function submitForm() {
-    alert("ttttt");
-    var formData: any = new FormData();
-    formData.append("name", this.form.get('name').value);
-    formData.append("avatar", this.form.get('avatar').value);
-  
-    this.http.post('http://10.6.38.11:8080/services/rs/registration/registerAu', formData).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    )
-  }
-*/
+

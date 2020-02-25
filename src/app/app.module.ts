@@ -13,6 +13,7 @@ import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
 import { MapComponent } from './map';
 import { AgmCoreModule } from '@agm/core';
+import { UserListComponent } from './userlist';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { AgmCoreModule } from '@agm/core';
         LoginComponent,
         RegisterComponent,
         AlertComponent,
-        MapComponent
+        MapComponent,
+        UserListComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

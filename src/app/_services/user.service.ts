@@ -16,9 +16,12 @@ export class UserService {
         //alert(user.Role);
         var jsonString = '{"Name":{"FirstName":"Shubhang","LastName":"Kukreti"},"EmailId":"kukretis@tcd.ie","Department":"Police","BadgeId":"POL123","Role":"Field Agent"}';
         var json = JSON.parse(jsonString);
-        
+        var res = this.http.post(`http://10.6.38.11:8080/services/rs/registration/registerAu`, json);
+        alert("cccc");
+        //alert(res);
         //return this.http.post(`${config.apiUrl}/users/register`, user);
-        return this.http.post(`http://10.6.38.11:8080/services/rs/registration/registerAu`, json);
+        return res;
+        //return null;
         /*
        return this.http.post('/api',
       JSON.stringify({

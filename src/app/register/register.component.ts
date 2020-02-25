@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
         this.submitted = true;
         
         // reset alerts on submit
-        this.alertService.clear();
+        //this.alertService.clear();
         //alert("Submission is running.");
         // stop here if form is invalid
         /*

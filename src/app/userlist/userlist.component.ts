@@ -12,10 +12,6 @@ import { Component} from '@angular/core';
     topic = 'desaster';
   
     constructor() {
-  
-   
-
-  
     }
   }
   

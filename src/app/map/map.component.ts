@@ -20,6 +20,7 @@ export class MapComponent {
         port:1884,
         clientId: 'website'
     }
+    /*
     const client = mqtt.connect('mqtt://127.0.0.1',opt)
     //client.publish(map_topic, 'this is mqtt.');
     
@@ -33,6 +34,6 @@ export class MapComponent {
       console.log(message);
       alert(message);
   });
-
+*/
   }
 }

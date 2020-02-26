@@ -2,7 +2,6 @@
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, UserService, AuthenticationService } from '@/_services';
 
 @Component({ templateUrl: 'register.component.html' })
@@ -46,6 +45,25 @@ export class RegisterComponent implements OnInit {
             Department: ['Police', Validators.required],
     
         });
+
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var kind = urlParams.get('kind');
+        var title = "";
+        var cancelUrl = "";
+
+        if(kind =="2"){
+            title = "Updating user";
+            cancelUrl = "/map";
+        }else if(kind == "1"){
+            title = "Registration";
+            cancelUrl = "/login";
+        }
+        document.getElementById("title").innerHTML = title;
+        document.getElementById("cancel").innerHTML = '<a href="'+cancelUrl+'" class="btn btn-link">Cancel</a>';
+        function goBack(){
+            window.location.href = cancelUrl;
+        }
     }
 
     // convenience getter for easy access to form fields

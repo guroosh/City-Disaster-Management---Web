@@ -1,4 +1,22 @@
-﻿﻿<!-- <div class="col-md-6 user-container">
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>User list</title>
+
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<link rel="icon" type="image/x-icon" href="favicon.ico">-->
+  <meta content=" Find local businesses, view maps and get driving directions in Google Maps. " name="Description">
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+<body>
+<!-- <div class="col-md-6 user-container">
     <a routerLink="/map" class="btn btn-link">Return</a>
     
     <a routerLink="/login" class="btn btn-link">Add User</a>
@@ -25,10 +43,38 @@
       <!-- </tr> -->
       <!-- </tbody> -->
     <!-- </table> -->
-    <div class="col-md-6 user-container">
+
+    <!--<div class="col-md-6 user-container">-->
+    <div>
       <h4 style="margin: auto">USER LIST</h4>
       <!-- <button class="btn btn-success" (click)="deleteUser(user)"> Add User</button>  -->
       <a routerLink="/register"[queryParams]="{kind:'1'}" class="btn btn-success" (click)="deleteUser(user)">Add User</a>
       <a routerLink="/login" class="btn btn-link">Back</a>
+      <br/><br/>
+      <table style="width:100%">
+        <tr>
+          <td >Email</td>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Badge ID</td>
+          <td>Role</td>
+          <td>Department</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let user of userList">
+          <td>{{user.email}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>{{user.BadgeId}}</td>
+          <td>{{user.Role}}</td>
+          <td>{{user.Department}}</td>
+          <td><input type="button" onclick="deleteUser()" value="Delete"/></td>
+          <td><button onclick="editUser()">Edit</button></td>
+        </tr>
+      </table>
     </div>
+
 <!--</div>-->
+</body>
+</html>

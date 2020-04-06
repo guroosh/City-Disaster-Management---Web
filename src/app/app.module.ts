@@ -12,6 +12,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MapModule} from './map/map.module';
 import {RegistrationModule} from './registration/registration.module';
 import  {DisasterReportModule} from './disaster-report/disaster-report.module';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+
 
 @NgModule({
   exports: [MatSidenavModule],
@@ -28,6 +31,7 @@ import  {DisasterReportModule} from './disaster-report/disaster-report.module';
     MatIconModule,
     MatListModule,
     MatButtonModule,
+    MatGridListModule,
     MapModule,
     RegistrationModule,
     DisasterReportModule

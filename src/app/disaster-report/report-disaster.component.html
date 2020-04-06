@@ -1,12 +1,47 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Disaster Details</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-label>Reference Code </mat-label>
-        <mat-label>Code</mat-label><br>
-        <mat-label>First Name</mat-label>
-        <mat-label>First Name</mat-label>
-        
-    </mat-card-content>
-    </mat-card>
+<div class="disaster-report-div">
+    <mat-card>
+        <mat-card-content>
+            <p>
+                <mat-grid-list rowHeight="30px" cols="7" >
+                    <mat-grid-tile colspan="3" rowspan="1" >
+                        <mat-label width="50%" class="label-key" >Disaster Id</mat-label>
+                        <mat-label width="50%" class="label-value">D1357977</mat-label>
+                    </mat-grid-tile>
+                <!-- <mat-grid-tile colspan="1" rowspan="1">
+                    dummy tile for maintaining alingment
+                </mat-grid-tile> -->
+                    <mat-grid-tile colspan="4" rowspan="10" class="map-grid-tile">
+                        <google-map height="300"></google-map>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-label width="50%" class="label-key" >Status</mat-label>
+                        <mat-label width="50%" class="label-value">Closed</mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-label width="50%" class="label-key" >Scale</mat-label>
+                        <mat-label width="50%" class="label-value">Medium</mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-label width="50%" class="label-key" >Radius</mat-label>
+                        <mat-label width="50%" class="label-value">800 meters</mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-label width="50%" class="label-key" >Reported at</mat-label>
+                        <mat-label width="50%" class="label-value">Date and time</mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-label width="50%" class="label-key" >Reported by</mat-label>
+                        <mat-label width="50%" class="label-value">Name and user id</mat-label>
+                    </mat-grid-tile>
+                    <mat-grid-tile colspan="3" rowspan="1">
+                        <mat-label width="50%" class="label-key" >location</mat-label>
+                        <mat-label width="50%" class="label-value">Dublin 1, near spire.</mat-label>
+                    </mat-grid-tile>
+                </mat-grid-list>
+                 
+            </p>
+            
+        </mat-card-content>
+        </mat-card>
+</div>

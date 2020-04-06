@@ -4,8 +4,8 @@ import { ReportDisasterComponent } from './report-disaster.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import {GoogleMapsModule} from '@angular/google-maps';
 
 @NgModule({
   declarations: [ReportDisasterComponent],
@@ -13,7 +13,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     CommonModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatGridListModule,
+    GoogleMapsModule
   ]
 })
 export class DisasterReportModule { }

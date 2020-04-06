@@ -1,43 +1,38 @@
-﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-
-import { appRoutingModule } from './app.routing';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { NgModule } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatListModule} from '@angular/material/list'
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon'
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { AlertComponent } from './_components';
-import { MapComponent } from './map';
-import { AgmCoreModule } from '@agm/core';
-import { UserListComponent } from './userlist';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MapModule} from './map/map.module';
+import {RegistrationModule} from './registration/registration.module';
+import  {DisasterReportModule} from './disaster-report/disaster-report.module';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        appRoutingModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyBPOVbWCZG6Weeunh-J2-t3NiyG_1-NXpQ'
-          })
-    ],
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        AlertComponent,
-        MapComponent,
-        UserListComponent
-    ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    ],
-    bootstrap: [AppComponent]
+  exports: [MatSidenavModule],
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    MapModule,
+    RegistrationModule,
+    DisasterReportModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
-export class AppModule { };
+export class AppModule { }

@@ -1,23 +1,24 @@
-﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
-<!--
-<div >
-<a href="credit">Logout</a>
-</div>
--->
-<!-- main app container -->
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3">
-                <alert></alert>
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
-</div>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" #sidenav  position="start">
+    <mat-list-item *ngFor="let menu of menuList" style="width: 180;">
+      <button mat-button class="menuButton" [routerLink]="menu.url">
+        <mat-icon mat-list-icon>{{menu.icon}}</mat-icon>
+      {{menu.name}} 
+      </button>
+    </mat-list-item>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar >
+      <button  mat-icon-button color="primary"  (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My Application</span>
+      
+      <span class="toolbar-spacer"></span>
+      My Account
+    </mat-toolbar>
+    <router-outlet>
+
+    </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

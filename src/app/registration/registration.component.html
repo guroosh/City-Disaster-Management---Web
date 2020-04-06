@@ -1,0 +1,58 @@
+<div class="registration-div">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Officer Registration</mat-card-title>
+        </mat-card-header>
+        <mat-card-content  class="registration-card-content">
+            <form>
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>First Name</mat-label>
+                        <input matInput name="firstName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="legacy" style="padding-left: 4%; width: 47%;">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput name="lastName">
+                    </mat-form-field>
+                </p>
+                <p>
+                   
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput name="email">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>Badge Number</mat-label>
+                        <input matInput name="badgeId">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>Department</mat-label>
+                        <mat-select name="Department">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let dep of departments" >{{dep.viewValue}}</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>Role</mat-label>
+                        <mat-select name="Department">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let role of roles" >{{role.viewValue}}</mat-option>
+                          </mat-select>
+                    </mat-form-field>
+                </p>
+                </form>
+        </mat-card-content>
+        <mat-card-action>
+            <button mat-raised-button color="primary">Submit</button>
+        </mat-card-action>
+    </mat-card>
+</div>

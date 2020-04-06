@@ -1,18 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
+import { CommonModule } from '@angular/common';
 import { MapComponent } from './map.component';
+import {GoogleMapsModule} from '@angular/google-maps';
+import { from } from 'rxjs';
 
 
 @NgModule({
-  declarations: [
-    MapComponent
-  ],
+  declarations: [MapComponent],
   imports: [
-    BrowserModule,
-    AgmCoreModule
-  ],
-  providers: [],
-  bootstrap: [MapComponent]
+    CommonModule,
+    GoogleMapsModule
+  ]
 })
 export class MapModule { }

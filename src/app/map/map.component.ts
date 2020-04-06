@@ -1,39 +1,52 @@
-import { Component} from '@angular/core';
-
+import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-root',
+  selector: 'app-map',
   templateUrl: './map.component.html',
-  //styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.scss']
 })
-export class MapComponent {
-  title = 'map';
-  lat = 53.3498;
-  lng = -6.2603;
-  topic = 'disaster';
+export class MapComponent implements OnInit {
 
-  constructor() {
+  @ViewChild("mapContainer", { static: false }) gmap: ElementRef;
+  map: google.maps.Map;
+  lat = 40.73061;
+  lng = -73.935242;
+  constructor() { }
 
+
+   //Coordinates to set the center of the map
+   //coordinates = new google.maps.co
+
+  //  mapOptions: google.maps.MapOptions = {
+  //    center: this.coordinates,
+  //    zoom: 8
+  //  };
  
-    const mqtt = require('mqtt')
-    var map_topic = 'disaster';
-    var opt = {
-        port:1884,
-        clientId: 'website'
-    }
-    /*
-    const client = mqtt.connect('mqtt://127.0.0.1',opt)
-    //client.publish(map_topic, 'this is mqtt.');
-    
-    client.on("connect",function(){	
-      console.log("connected  "+ client.connected);
-      })
-    client.subscribe(map_topic)
-  
-    client.on('message', function(topic,msg){
-      var message = 'received:'+topic+'-'+msg.toString()
-      console.log(message);
-      alert(message);
-  });
-*/
-  }
+  //  //Default Marker
+  //  marker = new google.maps.Marker({
+  //    position: this.coordinates,
+  //    map: this.map,
+  //    title: "Hello World!"
+  //  });
+ 
+   ngOnInit(): void {
+    //  this.mapInitializer();
+   }
+ 
+  //  mapInitializer(): void {
+  //    this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+ 
+  //    //Adding Click event to default marker
+  //    this.marker.addListener("click", () => {
+  //      const infoWindow = new google.maps.InfoWindow({
+  //        content: this.marker.getTitle()
+  //      });
+  //      infoWindow.open(this.marker.getMap(), this.marker);
+  //    });
+ 
+  //    //Adding default marker to map
+  //    this.marker.setMap(this.map);
+ 
+  //  }
+
 }

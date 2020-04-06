@@ -1,24 +1,31 @@
-﻿import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, ViewChild} from '@angular/core';
+import {MatSidenav} from '@angular/material/sidenav';
+export interface menu {
+  name : string;
+  icon : string;
+  url:string;
+}
 
-import { AuthenticationService } from './_services';
-import { AdminUser } from './_models';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
 
-import './_content/app.less';
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+
 export class AppComponent {
-    currentUser: AdminUser;
+  title = 'rscd-web';
+  reason = '';
+  @ViewChild('sidenav') sidenav: MatSidenav;
+  close(reason: string) {
+    this.reason = reason;
+    this.sidenav.close();
+  }
 
-    constructor(
-        private router: Router,
-        private authenticationService: AuthenticationService
-    ) {
-        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    }
-
-    logout() {
-        this.authenticationService.logout();
-        this.router.navigate(['/login']);
-    }
+  menuList : menu[] = [ 
+    {name:"Dashboard", icon:"menu", url:"/"},
+    { name:"Disaster Report", icon:"menu", url:"/disasterReport"},
+    {name:"Registration", icon:"menu", url:"/registration"},
+    { name:"Rescue Team", icon:"menu", url:"/"}]
 }

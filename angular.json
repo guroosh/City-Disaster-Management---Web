@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "rscd-web": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "rscd-web"
+    }
+  },
+  "defaultProject": "rscd-web",
+  "cli": {
+    "analytics": "d6df75b0-49c3-4379-8de7-32d202df3417"
+  }
 }

@@ -29,5 +29,5 @@ export class AppComponent {
     {name:"Registration", icon:"menu", url:"/registration"},
     { name:"Rescue Team", icon:"menu", url:"/"},
     { name:"Settings", icon:"settings", url:"/"},
-    { name:"Logout", icon:"logout", url:"/"}]
+    { name:"Logout", icon:"logout", url:"/dashboard"}]
 }

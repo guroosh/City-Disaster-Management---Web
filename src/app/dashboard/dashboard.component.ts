@@ -9,17 +9,6 @@ export interface dropDown{
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  departments : dropDown[] = [
-    {value: 'medical', viewValue:'Medical'},
-    {value:'traffic',viewValue:'Traffic'},
-    {value:'traffic',viewValue:'Traffic'},
-    {value:'traffic',viewValue:'Traffic'}, 
-  ];
-
-  roles : dropDown[] = [
-    {value: 'medical', viewValue:'Medical'},
-    {value:'traffic',viewValue:'Traffic'}
-  ];
   constructor() { }
 
   ngOnInit(): void {

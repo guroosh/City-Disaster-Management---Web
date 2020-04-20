@@ -4,6 +4,7 @@ import {MapComponent} from './map/map.component'
 import {RegistrationComponent} from './registration/registration.component'
 import {ReportDisasterComponent} from './disaster-report/report-disaster.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {RescueComponent} from './rescue/rescue.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path:'dashboard',
     component: DashboardComponent
+  },
+  {
+    path:'rescue',
+    component: RescueComponent
   }
 
 ];

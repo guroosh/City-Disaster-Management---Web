@@ -1,11 +1,11 @@
 import { Component,AfterViewInit, OnInit, ViewChild, ElementRef  } from '@angular/core';
 
 @Component({
-  selector: 'app-report-disaster',
-  templateUrl: './report-disaster.component.html',
-  styleUrls: ['./report-disaster.component.scss']
+  selector: 'app-rescue',
+  templateUrl: './rescue.component.html',
+  styleUrls: ['../map/map.component.scss']
 })
-export class ReportDisasterComponent implements OnInit,AfterViewInit {
+export class RescueComponent implements OnInit,AfterViewInit {
   @ViewChild("mapContainer") gmap: ElementRef;
   map: google.maps.Map;
 
@@ -32,7 +32,6 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
   var map = new google.maps.Map(document.getElementById('map'), {zoom: zoom, center: center});
   //var start_marker = new google.maps.Marker({position: start, map: map});
   //var end_marker = new google.maps.Marker({position: end, map: map}); 
-
 
   var circle = new google.maps.Circle({
     strokeColor: '#FF0000',

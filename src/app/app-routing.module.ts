@@ -5,12 +5,16 @@ import {RegistrationComponent} from './registration/registration.component'
 import {ReportDisasterComponent} from './disaster-report/report-disaster.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RescueComponent} from './rescue/rescue.component';
-
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {
     path:'',
     component: MapComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   },
   {
     path:'registration',

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
-//import {MapsAPILoader} from '@agm/core';
 
 @Component({
   selector: 'app-map',

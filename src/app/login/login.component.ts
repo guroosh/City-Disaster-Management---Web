@@ -9,7 +9,7 @@ export interface dropDown{
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
- 
+   hide ='true';
   constructor() { }
 
   ngOnInit(): void {

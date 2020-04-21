@@ -27,7 +27,7 @@ export class AppComponent {
   menuList : menu[] = [ 
     {name:"Dashboard", icon:"menu", url:"/"},
     { name:"Disaster Report", icon:"menu", url:"/disasterReport"},
-    {name:"Registration", icon:"menu", url:"/"},
+    // {name:"Registration", icon:"menu", url:"/"},
     { name:"Rescue Team", icon:"menu", url:"/rescue"},
     { name:"Settings", icon:"settings", url:"/"},
     { name:"Logout", icon:"logout", url:"/"}]

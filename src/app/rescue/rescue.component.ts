@@ -11,14 +11,11 @@ export class RescueComponent implements OnInit,AfterViewInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-
-    //this.center = {lat:53.3498,lng:-6.2603};
-
+  ngAfterViewInit(){
 
   }
 
-  ngAfterViewInit(){
+  ngOnInit(){
     var disasters = [
         {lat:53.35,lng:-6.26,radius:500,name:'Fire 1'},
         {lat:53.32,lng:-6.25,radius:200,name:'Fire 2'},
@@ -31,17 +28,10 @@ export class RescueComponent implements OnInit,AfterViewInit {
         {lat:53.335,lng:-6.265,name:'Team C'}
     ];
 
-    //var start = {lat:53.36,lng:-6.28};
-    //var end = {lat:53.34,lng:-6.24};
     var center = {lat:53.3498, lng:-6.2603};
     var radius = 150000;
     var zoom = 13;
-    var service = new google.maps.DirectionsService;
-    var renderer = new google.maps.DirectionsRenderer;
-
     var map = new google.maps.Map(document.getElementById('map'), {zoom: zoom, center: center});
-    //var start_marker = new google.maps.Marker({position: start, map: map});
-    //var end_marker = new google.maps.Marker({position: end, map: map}); 
 
     rescues.forEach(
         function(rescue){

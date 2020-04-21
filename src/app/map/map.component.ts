@@ -24,9 +24,7 @@ export class MapComponent {
     this.center = {lat:53.3498,lng:-6.2603};
   }
   ngAfterViewInit() { 
-    //const coordinates = new google.maps.LatLng(40, 73); 
-    //this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions); 
-    //this.marker = new google.maps.Marker({position:coordinates,map:this.map});
+
   }
 }
 

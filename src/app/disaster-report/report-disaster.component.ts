@@ -1,4 +1,5 @@
 import { Component,AfterViewInit, OnInit, ViewChild, ElementRef  } from '@angular/core';
+import {Paho} from 'ng2-mqtt/mqttws31';
 
 @Component({
   selector: 'app-report-disaster',
@@ -15,9 +16,83 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
   }
 
   ngAfterViewInit(){
-    var center = {lat:53.3498, lng:-6.2603};
-    var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
 
+/*
+    var ip = 'tcp://broker.hivemq.com';
+    var port = 1883;
+    var mqtt = require('mqtt');
+    
+    var map_topic = 'disaster';
+    var opt = {
+        port:port,
+        clientId: 'website'
+    }
+    var client = mqtt.connect(ip,opt)
+    //client.publish(map_topic, 'this is mqtt.');
+    
+    client.on("connect",function(){	
+      console.log("connected  "+ client.connected);
+      })
+    client.subscribe(map_topic)
+  
+    client.on('message', function(topic,msg){
+      var message = 'received:'+topic+'-'+msg.toString()
+      console.log(message);
+      alert(message);
+  });
+*/
+
+ var mqtt = new Paho.MQTT.Client('broker.hivemq.com',8000,"ASE_Frontend");
+ var options = {
+  timeout: 3,
+  onSuccess: onConnect,
+  onFailure: onFailure,
+  };
+  mqtt.onMessageArrived = onMessageArrived;
+  mqtt.connect(options);
+
+
+  function onConnect() {
+    //alert('connected');
+    mqtt.subscribe('disaster',1);
+  }
+  function onFailure(){
+    alert('connection is failed.');
+  }
+
+
+  var center = {lat:53.3498, lng:-6.2603};
+  var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
+  var markers = [];
+  var circles = [];
+
+  function onMessageArrived(r_message){
+    //alert(r_message.payloadString);
+    var root = document.getElementById('disaster_list');
+    root.innerHTML = '';
+
+    markers.forEach(
+      function(marker){
+        marker.setMap(null);
+      }
+    );
+
+    circles.forEach(
+      function(circle){
+        circle.setMap(null);
+      }
+    )
+
+    var result = JSON.parse(r_message.payloadString);
+    result.disasters.forEach(
+      function(disaster){
+        //alert(disaster.name);
+        createTable(disaster,map);
+      }
+    );
+  }
+
+  /*
     var disasters = [];
     disasters.push(createDisaster('D1','Fire 1','Closed','Medium',800,'21/4/2020','Amrish','Spire',53.35,-6.2603));
     disasters.push(createDisaster('D2','Fire 2','Closed','Medium',400,'21/4/2020','Amrish','Spire',53.34,-6.259));
@@ -27,6 +102,7 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
         createTable(disaster,map);
       }
     );
+*/
 
     function createDisaster(id,name,status,scale,radius,time,user,location,lat,lng){
       var disaster = {
@@ -55,7 +131,6 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
       html = addGrid(html,"Location",disaster.location);
       html = addGrid(html,"Reported at",disaster.time);
       html = addGrid(html,"Reported by",disaster.user);
-      html = addGrid(html,"Location",disaster.location);
       html += '</table></div>';
       root.innerHTML = root.innerHTML + html;
 
@@ -70,6 +145,7 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
         center: {lat:disaster.lat,lng:disaster.lng},
         radius: disaster.radius
       });
+      circles.push(circle);
       var marker = new google.maps.Marker(
         {
             position: {lat:disaster.lat,lng:disaster.lng}, 
@@ -84,6 +160,7 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
             }
         }
       );
+      markers.push(marker);
     }
 
     function addGrid(html,title,value){

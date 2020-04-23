@@ -1,0 +1,16 @@
+npm i @types/node
+
+add node to type[] in tsconfig.app.json
+
+npm install @angular-devkit/build-angular
+npm install -g typescript
+npm install @angular/core
+npm install @angular/common
+
+npm install mqtt --save
+
+npm install --save-dev @types/paho-mqtt
+
+npm install --save @types/paho-mqtt
+
+npm install ng2-mqtt

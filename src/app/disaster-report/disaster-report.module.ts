@@ -19,3 +19,4 @@ import {GoogleMapsModule} from '@angular/google-maps';
   ]
 })
 export class DisasterReportModule { }
+

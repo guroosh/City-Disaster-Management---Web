@@ -6,7 +6,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {GoogleMapsModule} from '@angular/google-maps';
-import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [RescueComponent],
@@ -16,8 +15,7 @@ import { AgmCoreModule } from '@agm/core';
     MatInputModule,
     MatFormFieldModule,
     MatGridListModule,
-    GoogleMapsModule,
-    AgmCoreModule
+    GoogleMapsModule
   ]
 })
 export class DisasterReportModule { }

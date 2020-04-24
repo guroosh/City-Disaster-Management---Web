@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, ViewChild,OnInit,AfterContentInit,AfterViewInit,Input} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 
 export interface menu {
@@ -15,9 +15,11 @@ export interface menu {
 
 
 
-export class AppComponent {
+export class AppComponent  implements OnInit,AfterContentInit,AfterViewInit{
   title = 'rscd-web';
   reason = '';
+  opened = "true";
+  //@Input('sidenav') sidenav: MatSidenav;
   @ViewChild('sidenav') sidenav: MatSidenav;
   close(reason: string) {
     this.reason = reason;
@@ -31,4 +33,12 @@ export class AppComponent {
     { name:"Rescue Team", icon:"menu", url:"/rescue"},
     // { name:"Settings", icon:"settings", url:"/"},
     { name:"Logout", icon:"logout", url:"/"}]
+
+  ngOnInit(): void {
+  }
+  ngAfterContentInit() {
+  }
+  ngAfterViewInit(){
+    //alert(this.sidenav);
+  }
 }

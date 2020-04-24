@@ -1,16 +1,16 @@
-npm i @types/node
+--Other
+ng --version
 
-add node to type[] in tsconfig.app.json
-
-npm install @angular-devkit/build-angular
-npm install -g typescript
+--Basic
 npm install @angular/core
 npm install @angular/common
+npm install @angular-devkit/build-angular
 
-npm install mqtt --save
+---UPDATE
+ng update @angular/core @angular/cli
+ng update @angular/cli @angular/core --allow-dirty
+npm update typescript
+ng update --all --force  --allow-dirty
 
-npm install --save-dev @types/paho-mqtt
-
-npm install --save @types/paho-mqtt
-
+--MQTT
 npm install ng2-mqtt

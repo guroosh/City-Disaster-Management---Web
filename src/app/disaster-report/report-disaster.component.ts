@@ -41,6 +41,10 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
       alert(message);
   });
 */
+var center = {lat:53.3498, lng:-6.2603};
+var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
+var markers = [];
+var circles = [];
 
  var mqtt = new Paho.MQTT.Client('broker.hivemq.com',8000,"ASE_Frontend");
  var options = {
@@ -60,12 +64,6 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
     alert('connection is failed.');
   }
 
-
-  var center = {lat:53.3498, lng:-6.2603};
-  var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
-  var markers = [];
-  var circles = [];
-
   function onMessageArrived(r_message){
     //alert(r_message.payloadString);
     var root = document.getElementById('disaster_list');
@@ -83,7 +81,12 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
       }
     )
 
+    markers.length = 0;
+    circles.length = 0;
+
     var result = JSON.parse(r_message.payloadString);
+    var list = document.getElementById('disaster_list');
+    list.style.height = (result.disasters.length*230).toString()+'px';
     result.disasters.forEach(
       function(disaster){
         //alert(disaster.name);
@@ -127,7 +130,7 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
       html = addGrid(html,"Disaster Name",disaster.name);
       html = addGrid(html,"Status",disaster.status);
       html = addGrid(html,"Scale",disaster.scale);
-      html = addGrid(html,"Radius",disaster.radius);
+      html = addGrid(html,"Radius",disaster.radius+' m');
       html = addGrid(html,"Location",disaster.location);
       html = addGrid(html,"Reported at",disaster.time);
       html = addGrid(html,"Reported by",disaster.user);

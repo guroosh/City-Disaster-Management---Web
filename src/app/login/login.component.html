@@ -1,24 +1,20 @@
-<body>
+
     <div class="container">
         <section id="content">
-            <form action="/disasterReport">
+            <form [formGroup]="submission" (ngSubmit)="onSubmit(submission.value)">
                 <h1>Officer Login</h1>
                 <div>
-                    <input type="text" placeholder="Username" required="" id="username" />
+                    <input type="text" required="" id="username" value="" formControlName="UserName" />
                 </div>
                 <div>
-                    <input type="password" placeholder="Password" required="" id="password" />
+                    <input type="password" required="" id="password" value=""  formControlName="Password"  />
                 </div>
                 <div>
-                    <input type="submit" value="Log in" />
+                    <button type="submit" >Log in</button>
                     <a href="/registration">Forgot password?</a>
                     <a href="/registration">Register</a>
                 </div>
-            </form><!-- form -->
-            <div class="button">
-                <a href="/rescue"></a>
-            </div><!-- button -->
-        </section><!-- content -->
-    </div><!-- container -->
-    </body>
-  
+            </form>
+        </section>
+    </div>
+

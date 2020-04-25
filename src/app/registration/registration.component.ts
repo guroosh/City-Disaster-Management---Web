@@ -44,9 +44,7 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-  onSubmit(user){
-    //alert("submit!");
-    //alert(data.firstName);
+  onSubmit(user):void{
         
     let headers = new HttpHeaders({'Content-Type':'application/json',
     'RSCD-Token':'DynattralL1TokenKey12345',

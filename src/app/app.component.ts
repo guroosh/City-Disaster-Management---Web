@@ -29,8 +29,7 @@ export class AppComponent  implements OnInit,AfterContentInit,AfterViewInit{
     {name:"Dashboard", icon:"menu", url:"/"},
     { name:"Disaster Report", icon:"menu", url:"/disasterReport"},
     {name:"Registration", icon:"menu", url:"/registration"},
-    { name:"Rescue Team", icon:"menu", url:"/"},
-    { name:"Settings", icon:"settings", url:"/"},
+    { name:"Rescue Team", icon:"menu", url:"/rescue"},
     { name:"Logout", icon:"logout", url:"/"}]
 
   ngOnInit(): void {

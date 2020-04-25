@@ -11,10 +11,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MapModule} from './map/map.module';
 import {RegistrationModule} from './registration/registration.module';
-import  {DisasterReportModule} from './disaster-report/disaster-report.module';
+import {DisasterReportModule} from './disaster-report/disaster-report.module';
 import {MatGridListModule} from '@angular/material/grid-list';
-
-
+import {LoginModule} from './login/login.module';
+import {RescueModule} from './rescue/rescue.module';
 
 @NgModule({
   exports: [MatSidenavModule],
@@ -34,7 +34,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatGridListModule,
     MapModule,
     RegistrationModule,
-    DisasterReportModule
+    DisasterReportModule,
+    LoginModule,
+    RescueModule
   ],
   providers: [],
   bootstrap: [AppComponent]

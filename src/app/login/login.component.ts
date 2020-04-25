@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild ,AfterViewInit, Input} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 import {AppComponent} from '../app.component';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 
 export interface dropDown{
   value: string;
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit,AfterViewInit {
   //@Input('sidenav') sidenav: MatSidenav;
   @ViewChild('sidenav') sidenav: MatSidenav;
   constructor() { }
+
 
   ngOnInit(): void {
 

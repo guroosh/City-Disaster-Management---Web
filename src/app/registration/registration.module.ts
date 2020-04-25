@@ -5,9 +5,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select'
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button'
-
+import { HttpClientModule} from '@angular/common/http';
 
 
 
@@ -20,7 +20,9 @@ import {MatButtonModule} from '@angular/material/button'
     MatFormFieldModule,
     FormsModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

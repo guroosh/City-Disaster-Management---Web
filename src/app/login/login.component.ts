@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
   ngAfterViewInit():void{
     //alert(this.sidenav);
     //this.sidenav.close();
+    //this.sidenav = document.getElementById('side_menu');
 
   }
   
@@ -68,12 +69,10 @@ export class LoginComponent implements OnInit {
       (response) => {
         //page.success();
         alert("Welcome.");
-        console.log(response);
         location.href = "/disasterReport";
       },
       (error) => {
         alert("The login is failed.");
-        console.log(error);
       }
     )
 

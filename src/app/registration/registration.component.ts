@@ -65,14 +65,13 @@ export class RegistrationComponent implements OnInit {
 
     this.http.post('http://52.212.233.94:8080/services/rs/registration/registerAu/', data,options).subscribe(
       (response) => {
-        //page.success();
-        alert("The registration is successful.");
-        console.log(response);
+        //alert(JSON.stringify(response));
+        alert("Registration is successful.");
         location.href = "/";
       },
       (error) => {
-        alert("The account is existed.");
-        console.log(error);
+       //alert(JSON.stringify(error));
+        alert("The user is existed.");
       }
     )
 

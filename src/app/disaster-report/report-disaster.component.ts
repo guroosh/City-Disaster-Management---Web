@@ -42,7 +42,8 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
         var disasterList = result.disasterReportList;
         disasterList.forEach(
           function(disaster){
-            createTable(disaster,map);
+            if(!disaster.isClosed)
+              createTable(disaster,map);
           }
         );
         //console.log(disasterList.length);
@@ -127,11 +128,11 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
       var html = '<div style="height:230px"><table width="100%">';
       html = addGrid(html,"Disaster Id",disaster.referenceCode);
       html = addGrid(html,"Disaster Type",disaster.disasterType);
-      html = addGrid(html,"Reported By",disaster.reportedBy.firstName+disaster.reportedBy.lastName);
+      html = addGrid(html,"Reported By",disaster.reportedBy.firstName+" "+disaster.reportedBy.lastName);
       html = addGrid(html,"Reporter Id",disaster.reporterId);
       html = addGrid(html,"Reported Time",disaster.ReportedTime);
       html = addGrid(html,"Is Verified",disaster.isVerfied);
-      html = addGrid(html,"Is Closed",disaster.isClosed);
+      //html = addGrid(html,"Is Closed",disaster.isClosed);
       html += '</table></div>';
       root.innerHTML = root.innerHTML + html;
 

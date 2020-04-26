@@ -1,5 +1,5 @@
 import { Component,AfterViewInit, OnInit, ViewChild, ElementRef  } from '@angular/core';
-//import {Paho} from 'ng2-mqtt/mqttws31';
+import {Paho} from 'ng2-mqtt/mqttws31';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 
 @Component({
@@ -22,8 +22,7 @@ export class ReportDisasterComponent implements OnInit {
 
     var center = {lat:53.3498, lng:-6.2603};
     var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
-    var markers = [];
-    var circles = [];
+    var user_markers = [];
 
     let headers = new HttpHeaders({'Content-Type':'application/json',
     'RSCD-Token':'DynattralL1TokenKey12345',
@@ -51,56 +50,56 @@ export class ReportDisasterComponent implements OnInit {
     )
 
 
-/*
+
  var mqtt = new Paho.MQTT.Client('broker.hivemq.com',8000,"ASE_Frontend");
- var options = {
+ var mqtt_options = {
   timeout: 3,
   onSuccess: onConnect,
   onFailure: onFailure,
   };
   mqtt.onMessageArrived = onMessageArrived;
-  mqtt.connect(options);
+  mqtt.connect(mqtt_options);
 
 
   function onConnect() {
     //alert('connected');
-    mqtt.subscribe('disaster',1);
+    mqtt.subscribe('/ase/liveAdminLocation',1);
   }
   function onFailure(){
-    alert('connection is failed.');
+    alert('MQTT connection is failed.');
   }
 
   function onMessageArrived(r_message){
-    //alert(r_message.payloadString);
-    var root = document.getElementById('disaster_list');
-    root.innerHTML = '';
-
-    markers.forEach(
-      function(marker){
-        marker.setMap(null);
+      //alert(r_message.payloadString);
+      //var result = JSON.parse(r_message.payloadString);
+      var result = r_message.payloadString.split(',');
+      
+      /*
+      user_markers.forEach(
+        function(marker){
+          marker.setMap(null);
+        }
+      );
+      user_markers.length = 0;   
+      */
+    var marker = new google.maps.Marker(
+      {
+          position: {lat:parseFloat(result[0]),lng: parseFloat(result[1])}, 
+          map: map, 
+          
+          label: {
+              text: "User",
+              color: '#0000AA',
+              fontSize: '30px'
+          },
+          icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+          }
       }
     );
 
-    circles.forEach(
-      function(circle){
-        circle.setMap(null);
-      }
-    )
-
-    markers.length = 0;
-    circles.length = 0;
-
-    var result = JSON.parse(r_message.payloadString);
-    var list = document.getElementById('disaster_list');
-    list.style.height = (result.disasters.length*230).toString()+'px';
-    result.disasters.forEach(
-      function(disaster){
-        //alert(disaster.name);
-        createTable(disaster,map);
-      }
-    );
   }
-*/
+
 /*
     function createDisaster(id,name,status,scale,radius,time,user,location,lat,lng){
       var disaster = {
@@ -147,7 +146,7 @@ export class ReportDisasterComponent implements OnInit {
         center: {lat:disaster.latitude,lng:disaster.longitude},
         radius: disaster.radius
       });
-      circles.push(circle);
+      //circles.push(circle);
       var marker = new google.maps.Marker(
         {
             position: {lat:disaster.latitude,lng:disaster.longitude}, 
@@ -162,7 +161,7 @@ export class ReportDisasterComponent implements OnInit {
             }
         }
       );
-      markers.push(marker);
+      //markers.push(marker);
     }
 
     function addGrid(html,title,value){

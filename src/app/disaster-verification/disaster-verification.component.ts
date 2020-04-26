@@ -22,8 +22,8 @@ export class DisasterVerificationComponent implements OnInit,AfterViewInit {
             this.params = params;
         }
       );
-    this.lat = this.params['lat'];
-    this.lng = this.params['lng'];
+    this.lat = parseFloat(this.params['lat']);
+    this.lng = parseFloat(this.params['lng']);
     this.code = this.params['code'];
     this.submission = this.formBuilder.group({
         isTrue: true,
@@ -42,20 +42,33 @@ export class DisasterVerificationComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit(){
-/*
-    var center = {lat:53.3498, lng:-6.2603};
-    var radius = 150000;
-    var zoom = 13;
-    var map = new google.maps.Map(document.getElementById('map'), {zoom: zoom, center: center});
-    var disaster_markers = [];
-    var disaster_circles = [];
-    var rescue_markers = [];
-*/
 
     document.getElementById('referenceCode').innerHTML = this.code;
     document.getElementById('latitude').innerHTML = this.lat;
     document.getElementById('longitude').innerHTML = this.lng;
 
+
+    var center = {lat:this.lat, lng:this.lng};
+    var zoom = 13;
+    var map = new google.maps.Map(document.getElementById('dv_map'), {zoom: zoom, center: center});
+    var disaster_markers = [];
+    var disaster_circles = [];
+    var rescue_markers = [];
+
+    var marker = new google.maps.Marker(
+        {
+            position: {lat:this.lat,lng:this.lng}, 
+            map: map, 
+            label: {
+                text: this.code,
+                color: '#AA0000',
+                fontSize: '30px'
+            },
+            icon: {
+                url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+            }
+        }
+      );
 
   }
 
@@ -67,8 +80,8 @@ export class DisasterVerificationComponent implements OnInit,AfterViewInit {
     'RSCD-JWT-Token':'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJEeW5hdHRyYWwgVGVjaCIsIklzc3VlZFRvIjoiWWVra28iLCJFbXBsb3llZUNvZGUiOiJFTVAyNTM1NjciLCJQYXlsb2FkS2V5IjoiMTJkMDhlYjBhYTkyYjk0NTk2NTU2NWIyOWQ1M2FkMWYxNWE1NTE0NGVkMDcxNGFjNTZjMzQ2NzdjY2JjYjQwMCIsIklzc3VlZEF0IjoiMTktMDQtMjAxOSAyLjU0LjIzIFBNIiwiQ2hhbm5lbCI6InNpdGUifQ.Rf7szVWkGiSXHXfGW-xj4TRIw3VQRAySrt9kaEk1kuM'});
     let data={
       "ReferenceCode":this.code,
-      "Latitude":parseFloat(this.lat),
-      "Longitude":parseFloat(this.lng),
+      "Latitude":this.lat,
+      "Longitude":this.lng,
       "Landmark":submission.landmark,
       "VerifiedTime":time,
       "VerifiedBy":localStorage.getItem('userName'),
@@ -90,8 +103,8 @@ export class DisasterVerificationComponent implements OnInit,AfterViewInit {
         location.href = "/disasterReport";
       },
       (error) => {
-        //alert("Verification is failed.");
-        alert(JSON.stringify(error));
+        alert("Verification is failed.");
+        //alert(JSON.stringify(error));
       }
     )
   }

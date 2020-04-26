@@ -8,14 +8,12 @@
     </mat-list-item>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div id="menu_bar">
-    <mat-toolbar>
+    <mat-toolbar #toolbar id="toolbar">
       <button  mat-icon-button color="primary"  (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <span>Admin Application</span>
     </mat-toolbar>
-    </div>
     <router-outlet>
 
     </router-outlet>

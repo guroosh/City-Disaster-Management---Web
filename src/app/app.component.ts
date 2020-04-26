@@ -1,5 +1,6 @@
 import {Component, ViewChild,OnInit,AfterContentInit,AfterViewInit,Input} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
+import { MatToolbar } from '@angular/material/toolbar';
 export interface menu {
   name : string;
   icon : string;
@@ -19,11 +20,16 @@ export class AppComponent  implements OnInit,AfterContentInit,AfterViewInit{
   reason = '';
   opened = "true";
   //@Input('sidenav') sidenav: MatSidenav;
+  //@Input('toolbar') toolbar: MatToolbar;
+  
+  
   @ViewChild('sidenav') sidenav: MatSidenav;
   close(reason: string) {
     this.reason = reason;
     this.sidenav.close();
   }
+  
+  
 
   menuList : menu[] = [ 
     {name:"Dashboard", icon:"menu", url:"/"},
@@ -33,10 +39,12 @@ export class AppComponent  implements OnInit,AfterContentInit,AfterViewInit{
     { name:"Logout", icon:"logout", url:"/"}]
 
   ngOnInit(): void {
+    
   }
   ngAfterContentInit() {
   }
   ngAfterViewInit(){
-    //alert(this.sidenav);
+
+    //this.sidenav.open();
   }
 }

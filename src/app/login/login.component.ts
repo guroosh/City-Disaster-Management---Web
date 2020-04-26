@@ -1,8 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit,ContentChild} from '@angular/core';
 //import {MatSidenav} from '@angular/material/sidenav';
 import { FormBuilder, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
-
+import {MatSidenav} from '@angular/material/sidenav';
+//import { AppComponent } from '../app.component';
 
 export interface dropDown{
   value: string;
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   submission;
   //@Input('sidenav') sidenav: MatSidenav;
   //@ViewChild('sidenav') sidenav: MatSidenav;
-  
+  @ContentChild('sidenav') sidenav: MatSidenav;
+
   constructor(public http: HttpClient,private formBuilder: FormBuilder) { 
     this.submission = this.formBuilder.group({
       UserName: 'tester09@mail.com',
@@ -37,13 +39,17 @@ export class LoginComponent implements OnInit {
   
     //this.sidenav.close();
    // @Input() sidenav
+   const toolbar = document.getElementById('toolbar');
+   toolbar.setAttribute('style', 'display:none');
+   
   }
-/*
+
   ngAfterViewInit():void{
     //alert(this.sidenav);
-    
+    //this.sidenav.close();
+
   }
-  */
+  
   onSubmit(user):void{
 
     let headers = new HttpHeaders({'Content-Type':'application/json',

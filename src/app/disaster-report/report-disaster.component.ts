@@ -1,51 +1,60 @@
 import { Component,AfterViewInit, OnInit, ViewChild, ElementRef  } from '@angular/core';
-import {Paho} from 'ng2-mqtt/mqttws31';
+//import {Paho} from 'ng2-mqtt/mqttws31';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-report-disaster',
   templateUrl: './report-disaster.component.html',
   styleUrls: ['./report-disaster.component.scss']
 })
+
+
 export class ReportDisasterComponent implements OnInit,AfterViewInit {
   @ViewChild("mapContainer") gmap: ElementRef;
   map: google.maps.Map;
 
-  constructor() { }
+  constructor(public http: HttpClient) {
+
+   }
 
   ngOnInit(): void {
+
   }
 
   ngAfterViewInit(){
 
-/*
-    var ip = 'tcp://broker.hivemq.com';
-    var port = 1883;
-    var mqtt = require('mqtt');
-    
-    var map_topic = 'disaster';
-    var opt = {
-        port:port,
-        clientId: 'website'
-    }
-    var client = mqtt.connect(ip,opt)
-    //client.publish(map_topic, 'this is mqtt.');
-    
-    client.on("connect",function(){	
-      console.log("connected  "+ client.connected);
-      })
-    client.subscribe(map_topic)
-  
-    client.on('message', function(topic,msg){
-      var message = 'received:'+topic+'-'+msg.toString()
-      console.log(message);
-      alert(message);
-  });
-*/
-var center = {lat:53.3498, lng:-6.2603};
-var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
-var markers = [];
-var circles = [];
 
+    var center = {lat:53.3498, lng:-6.2603};
+    var map = new google.maps.Map(document.getElementById('disaster_map'), {zoom: 13, center: center});
+    var markers = [];
+    var circles = [];
+
+    let headers = new HttpHeaders({'Content-Type':'application/json',
+    'RSCD-Token':'DynattralL1TokenKey12345',
+    'RSCD-JWT-Token':'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIiOiJEeW5hdHRyYWwgVGVjaCIsIklzc3VlZFRvIjoiWWVra28iLCJFbXBsb3llZUNvZGUiOiJFTVAyNTM1NjciLCJQYXlsb2FkS2V5IjoiMTJkMDhlYjBhYTkyYjk0NTk2NTU2NWIyOWQ1M2FkMWYxNWE1NTE0NGVkMDcxNGFjNTZjMzQ2NzdjY2JjYjQwMCIsIklzc3VlZEF0IjoiMTktMDQtMjAxOSAyLjU0LjIzIFBNIiwiQ2hhbm5lbCI6InNpdGUifQ.Rf7szVWkGiSXHXfGW-xj4TRIw3VQRAySrt9kaEk1kuM'});
+    let options = { headers : headers} 
+
+    this.http.get('http://52.212.233.94:8080/services/ds/DisasterReport/getDisasterList', options).subscribe(
+      (response) => {
+        //page.success();
+        var result = JSON.parse(JSON.stringify(response));
+        //alert(result.actionResponse.statusCode);
+        var disasterList = result.disasterReportList;
+        disasterList.forEach(
+          function(disaster){
+            createTable(disaster,map);
+          }
+        );
+        //console.log(disasterList.length);
+      },
+      (error) => {
+        alert("Failed.");
+        //console.log(error);
+      }
+    )
+
+
+/*
  var mqtt = new Paho.MQTT.Client('broker.hivemq.com',8000,"ASE_Frontend");
  var options = {
   timeout: 3,
@@ -94,19 +103,8 @@ var circles = [];
       }
     );
   }
-
-  /*
-    var disasters = [];
-    disasters.push(createDisaster('D1','Fire 1','Closed','Medium',800,'21/4/2020','Amrish','Spire',53.35,-6.2603));
-    disasters.push(createDisaster('D2','Fire 2','Closed','Medium',400,'21/4/2020','Amrish','Spire',53.34,-6.259));
-
-    disasters.forEach(
-      function(disaster){
-        createTable(disaster,map);
-      }
-    );
 */
-
+/*
     function createDisaster(id,name,status,scale,radius,time,user,location,lat,lng){
       var disaster = {
         id:id,
@@ -122,18 +120,18 @@ var circles = [];
       }
       return disaster;
     }
-
+*/
+    
     function createTable(disaster,map){
       var root = document.getElementById('disaster_list');
       var html = '<div style="height:230px"><table width="100%">';
-      html = addGrid(html,"Disaster Id",disaster.id);
-      html = addGrid(html,"Disaster Name",disaster.name);
-      html = addGrid(html,"Status",disaster.status);
-      html = addGrid(html,"Scale",disaster.scale);
-      html = addGrid(html,"Radius",disaster.radius+' m');
-      html = addGrid(html,"Location",disaster.location);
-      html = addGrid(html,"Reported at",disaster.time);
-      html = addGrid(html,"Reported by",disaster.user);
+      html = addGrid(html,"Disaster Id",disaster.referenceCode);
+      html = addGrid(html,"Disaster Type",disaster.disasterType);
+      html = addGrid(html,"Reported By",disaster.reportedBy.firstName+disaster.reportedBy.lastName);
+      html = addGrid(html,"Reporter Id",disaster.reporterId);
+      html = addGrid(html,"Reported Time",disaster.ReportedTime);
+      html = addGrid(html,"Is Verified",disaster.isVerfied);
+      html = addGrid(html,"Is Closed",disaster.isClosed);
       html += '</table></div>';
       root.innerHTML = root.innerHTML + html;
 

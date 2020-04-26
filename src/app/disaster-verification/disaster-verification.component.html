@@ -1,0 +1,66 @@
+<table width = "1000px" >
+    <tr>
+        <th width="600px">
+            <form [formGroup]="submission" (ngSubmit)="onSubmit(submission.value)">
+                <table width="600px" >
+                    <tr  align="left">
+                        <th width="300px" >Reference Code</th>
+                        <th width="300px" id="referenceCode">1</th>
+                    </tr>
+                    <tr  align="left">
+                        <th>Latitude</th>
+                        <th id="latitude">1</th>
+                    </tr>
+                    <tr  align="left">
+                        <th>Longitude</th>
+                        <th id="longitude">1</th>
+                    </tr>
+                    <tr align="left">
+                        <th>Is info true?</th>
+                        <th><input type="checkbox" id="isTrue" value="" formControlName="isTrue"></th>
+                    </tr>
+                    <tr align="left">
+                        <th>Radius</th>
+                        <th><input type="text" id="radius" value="0" formControlName="radius" /> m</th>
+                    </tr>
+                    <tr align="left">
+                        <th>Landmark</th>
+                        <th><input type="text" id="landmark" value="" formControlName="landmark"/></th>
+                    </tr>
+                    <tr align="left">
+                        <th>Scale of disaster</th>
+                        <th>
+                            <select id="scale" formControlName="scale">
+                                <option value="High" selected>High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                              </select>
+                        </th>
+                    </tr>
+                    <tr align="left">
+                        <th>Medical assistance required</th>
+                        <th><input type="checkbox" id="medical" value="" formControlName="medical"></th>
+                    </tr>
+                    <tr align="left">
+                        <th>Traffic police assistance required</th>
+                        <th><input type="checkbox" id="traffic" value="" formControlName="traffic"></th>
+                    </tr>
+                    <tr align="left">
+                        <th>Fire brigade assistance required</th>
+                        <th><input type="checkbox" id="fire" value="" formControlName="fire"></th>
+                    </tr>
+                    <tr align="left">
+                        <th>Other response team required</th>
+                        <th><input type="text" id="other" value="" formControlName="other"></th>
+                    </tr>
+                </table>
+                <button type="submit" >Verify</button>
+            </form>
+        </th>
+        <th width="400px">
+            <div id="dv_map" style="width: 800px;height:600px">
+
+            </div>
+        </th>
+    </tr>
+</table>

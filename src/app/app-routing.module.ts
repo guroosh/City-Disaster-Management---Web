@@ -6,6 +6,7 @@ import {ReportDisasterComponent} from './disaster-report/report-disaster.compone
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {RescueComponent} from './rescue/rescue.component';
 import {LoginComponent} from './login/login.component';
+import {DisasterVerificationComponent} from './disaster-verification/disaster-verification.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,10 @@ const routes: Routes = [
     path:'rescue',
     component: RescueComponent
   },
-
+  {
+    path:'disasterVerification',
+    component: DisasterVerificationComponent
+  },
 ];
 
 @NgModule({

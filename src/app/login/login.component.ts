@@ -68,7 +68,8 @@ export class LoginComponent implements OnInit {
     this.http.post('http://52.212.233.94:8080/login/login', data,options).subscribe(
       (response) => {
         //page.success();
-        alert("Welcome.");
+        //alert("Welcome.");
+        localStorage.setItem('userName',user.UserName);
         location.href = "/disasterReport";
       },
       (error) => {

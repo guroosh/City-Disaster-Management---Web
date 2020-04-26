@@ -15,6 +15,7 @@ import {DisasterReportModule} from './disaster-report/disaster-report.module';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {LoginModule} from './login/login.module';
 import {RescueModule} from './rescue/rescue.module';
+import {DisasterVerificationModule} from './disaster-verification/disaster-verification.module';
 
 @NgModule({
   exports: [MatSidenavModule],
@@ -36,7 +37,8 @@ import {RescueModule} from './rescue/rescue.module';
     RegistrationModule,
     DisasterReportModule,
     LoginModule,
-    RescueModule
+    RescueModule,
+    DisasterVerificationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

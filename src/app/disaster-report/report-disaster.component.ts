@@ -9,7 +9,7 @@ import { HttpClient,HttpHeaders} from '@angular/common/http';
 })
 
 
-export class ReportDisasterComponent implements OnInit,AfterViewInit {
+export class ReportDisasterComponent implements OnInit {
   @ViewChild("mapContainer") gmap: ElementRef;
   map: google.maps.Map;
 
@@ -17,11 +17,7 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
 
    }
 
-  ngOnInit(): void {
-
-  }
-
-  ngAfterViewInit(){
+  ngOnInit(){
 
 
     var center = {lat:53.3498, lng:-6.2603};
@@ -130,9 +126,13 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
       html = addGrid(html,"Disaster Type",disaster.disasterType);
       html = addGrid(html,"Reported By",disaster.reportedBy.firstName+" "+disaster.reportedBy.lastName);
       html = addGrid(html,"Reporter Id",disaster.reporterId);
-      html = addGrid(html,"Reported Time",disaster.ReportedTime);
+      html = addGrid(html,"Reported Time",disaster.reportedTime);
       html = addGrid(html,"Is Verified",disaster.isVerfied);
       //html = addGrid(html,"Is Closed",disaster.isClosed);
+      html+='<tr align="left">';
+      html+='<th></th>';
+      html+='<th><button onclick="location.href=\'/disasterVerification?code='+disaster.referenceCode+'&lat='+disaster.latitude+'&lng='+disaster.longitude+'\'">Verify it</button></th>';
+      html+='</tr>';
       html += '</table></div>';
       root.innerHTML = root.innerHTML + html;
 
@@ -144,16 +144,16 @@ export class ReportDisasterComponent implements OnInit,AfterViewInit {
         fillColor: '#FF0000',
         fillOpacity: 0.35,
         map: map,
-        center: {lat:disaster.lat,lng:disaster.lng},
+        center: {lat:disaster.latitude,lng:disaster.longitude},
         radius: disaster.radius
       });
       circles.push(circle);
       var marker = new google.maps.Marker(
         {
-            position: {lat:disaster.lat,lng:disaster.lng}, 
+            position: {lat:disaster.latitude,lng:disaster.longitude}, 
             map: map, 
             label: {
-                text: disaster.name,
+                text: disaster.referenceCode,
                 color: '#AA0000',
                 fontSize: '30px'
             },

@@ -49,4 +49,95 @@
             </mat-grid-list>
         </mat-card-content>
         </mat-card>
+    <br>
+        <mat-card> 
+            <mat-card-header>
+                <mat-card-title>Request Additional Resources</mat-card-title>
+            </mat-card-header>
+            <mat-card-content  class="registration-card-content">
+                <form>
+                    <p>
+                        <mat-form-field appearance="legacy" class="registration-form-field">
+                            <mat-label>First Name</mat-label>
+                            <input matInput name="firstName">
+                        </mat-form-field>
+    
+                        <mat-form-field appearance="legacy" style="padding-left: 4%; width: 47%;">
+                            <mat-label>Department</mat-label>
+                            <mat-select name="Department">
+                                <mat-option>None</mat-option>
+                                <mat-option *ngFor="let dep of departments" >{{dep.viewValue}}</mat-option>
+                              </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                       
+                        <button type="submit" mat-raised-button color="primary">Submit</button>
+                   
+                    </form>
+            </mat-card-content>
+        </mat-card>
+        <br>
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Offices Allocated</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+              
+                <!-- Position Column -->
+                <ng-container matColumnDef="Reference Code">
+                  <th mat-header-cell *matHeaderCellDef>Reference Code </th>
+                  <td mat-cell *matCellDef="let element"> {{element.ReferenceCode}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="First Name">
+                  <th mat-header-cell *matHeaderCellDef> First Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Name.FirstName}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Last Name">
+                  <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Name.LastName}} </td>
+                </ng-container>
+              
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Department">
+                  <th mat-header-cell *matHeaderCellDef> Department </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Department}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Badge Id">
+                    <th mat-header-cell *matHeaderCellDef> Badge Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.BadgeId}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Email Id">
+                    <th mat-header-cell *matHeaderCellDef> Email Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.EmailId}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Releive">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-raised-button color="primary" id="{{element.ReferenceCode}}" (click)="deallocate($event)" >
+                                Hello
+                        </button>
+                    </td>
+                  </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              
+        </mat-card-content>
+
+    
+    </mat-card>
 </div>
+

@@ -10,8 +10,8 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Use HTTP cloning to clone the project in your repository in Visual Studio Code Ide(git clone command)
 Run the following commands:
-npm install
-ng serve -o
+1) npm install
+2) ng serve -o
 
 ## Code scaffolding
 

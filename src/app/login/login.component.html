@@ -1,20 +1,29 @@
 
-    <div class="container">
-        <section id="content">
+    <div class="registration-div">
+        <h1><b>Officer Login</b></h1>
+        <mat-card>
+        <mat-card-content class="registration-card-content">
             <form [formGroup]="submission" (ngSubmit)="onSubmit(submission.value)">
-                <h1>Officer Login</h1>
+            
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>Email Id</mat-label>
+                        <input matInput name="UserName" formControlName="UserName" >
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field appearance="legacy" class="registration-form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" name="Password" formControlName="Password" >
+                    </mat-form-field>
+                </p>
                 <div>
-                    <input type="text" required="" id="username" value="" formControlName="UserName" />
-                </div>
-                <div>
-                    <input type="password" required="" id="password" value=""  formControlName="Password"  />
-                </div>
-                <div>
-                    <button type="submit" >Log in</button>
-                    <a href="/registration">Forgot password?</a>
-                    <a href="/registration">Register</a>
+                    <button type="submit" mat-raised-button color="primary">Login</button>
+
                 </div>
             </form>
-        </section>
+        </mat-card-content>
+        </mat-card>
+
     </div>
 

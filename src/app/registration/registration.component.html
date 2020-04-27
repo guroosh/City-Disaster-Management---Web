@@ -34,18 +34,18 @@
                 <p>
                     <mat-form-field appearance="legacy" class="registration-form-field">
                         <mat-label>Department</mat-label>
-                        <mat-select name="Department"  formControlName="Department" >
+                        <mat-select name="department"  formControlName="department" >
                             <mat-option>None</mat-option>
-                            <mat-option *ngFor="let dep of departments" >{{dep.viewValue}}</mat-option>
+                            <mat-option *ngFor="let dep of departments" value={{dep.value}} >{{dep.viewValue}}</mat-option>
                           </mat-select>
                     </mat-form-field>
                 </p>
                 <p>
                     <mat-form-field appearance="legacy" class="registration-form-field">
                         <mat-label>Role</mat-label>
-                        <mat-select name="Department"  formControlName="Role">
+                        <mat-select name="role"  formControlName="role">
                             <mat-option>None</mat-option>
-                            <mat-option *ngFor="let role of roles" >{{role.viewValue}}</mat-option>
+                            <mat-option *ngFor="let role of roles" value={{role.value}}>{{role.viewValue}}</mat-option>
                           </mat-select>
                     </mat-form-field>
                 </p>

@@ -13,15 +13,14 @@ export interface dropDown{
 })
 export class RegistrationComponent implements OnInit {
   departments : dropDown[] = [
-    {value: 'medical', viewValue:'Medical'},
-    {value:'traffic',viewValue:'Traffic'},
-    {value:'traffic',viewValue:'Traffic'},
-    {value:'traffic',viewValue:'Traffic'}, 
+    {value: 'Medical', viewValue:'Medical'},
+    {value:'Traffic',viewValue:'Traffic'},
+    {value:'Law',viewValue:'Traffic'}
   ];
 
   roles : dropDown[] = [
-    {value: 'medical', viewValue:'Medical'},
-    {value:'traffic',viewValue:'Traffic'}
+    {value: 'officer', viewValue:'Officer'},
+    {value:'admin',viewValue:'Admin'}
   ];
 
   submission;
@@ -32,8 +31,8 @@ export class RegistrationComponent implements OnInit {
       lastName: '',
       email: '',
       badgeId: '',
-      Department: '',
-      Role: ''
+      department: '',
+      role: ''
     });
   }
 
@@ -45,6 +44,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(user):void{
+
+    console.log(user);
         
     let headers = new HttpHeaders({'Content-Type':'application/json',
     'RSCD-Token':'DynattralL1TokenKey12345',
@@ -55,9 +56,9 @@ export class RegistrationComponent implements OnInit {
         "lastName":user.lastName
       },
       "EmailId":user.email,
-      "Department":user.Department,
-      "BadgeId":user.BadgeId,
-      "Role":user.Role
+      "Department":user.department,
+      "BadgeId":user.badgeId,
+      "Role":user.role
     }
     console.log(data)
 

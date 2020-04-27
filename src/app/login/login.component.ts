@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
         //page.success();
         //alert("Welcome.");
         localStorage.setItem('userName',user.UserName);
-        location.href = "/disasterReport";
+        location.href = "/rescue";
       },
       (error) => {
         alert("The login is failed.");

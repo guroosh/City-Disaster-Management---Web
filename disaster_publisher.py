@@ -22,6 +22,6 @@ json_str += ']}'
 
 client.publish("disaster", json_str)
 
-#print(json_str)
+print(json_str)
 
 #content = json.loads(json_str)

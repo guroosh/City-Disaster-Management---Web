@@ -32,10 +32,9 @@ export class AppComponent  implements OnInit,AfterContentInit,AfterViewInit{
   
 
   menuList : menu[] = [ 
-    {name:"Dashboard", icon:"menu", url:"/"},
+    {name:"Dashboard", icon:"menu", url:"/rescue"},
     { name:"Disaster Report", icon:"menu", url:"/disasterReport"},
     {name:"Registration", icon:"menu", url:"/registration"},
-    { name:"Rescue Team", icon:"menu", url:"/rescue"},
     { name:"Logout", icon:"logout", url:"/"}]
 
   ngOnInit(): void {

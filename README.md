@@ -26,9 +26,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-#Steps to run
+##Steps to run
 
-clone the project from the git using HTTP cloning on terminal(git clone )
+Use HTTP cloning to clone the project in your repository in Visual Studio Code Ide(git clone command)
 Run the following commands:
 npm install
 ng serve -o
